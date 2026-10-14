@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage subscription | My Apps</title>
+  <meta name="description" content="Manage your app subscription.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="preconnect" href="https://agcdn.altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body class="page-app" data-page="manage">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-shell">
+    <div class="app-shell__left">
+      <a class="app-shell__logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+      <a class="app-shell__settings" href="account.html" aria-label="Account settings"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></a>
+      <button type="button" class="app-shell__apps" id="apps-button" aria-haspopup="true" aria-expanded="false" aria-controls="apps-menu"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Apps<svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <nav class="app-menu" id="apps-menu" aria-label="My Apps" hidden>
+        <a href="manage.html" aria-current="page"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My subscriptions</a>
+        <a href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+        <a href="products.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add apps</a>
+      </nav>
+    </div>
+    <div class="app-shell__right">
+      <p class="app-shell__alert" id="payment-alert" role="status" hidden><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Your payment detail is not updated</p>
+      <div class="profile profile--dark" data-profile>
+        <button type="button" class="profile__btn" id="profile-button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" aria-label="Account menu"><span class="profile__initials" data-profile-initials aria-hidden="true"></span><span class="profile__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></button>
+        <div class="profile__menu" id="profile-menu" hidden>
+          <div class="profile__head"><span class="profile__avatar" data-profile-initials aria-hidden="true"></span><div><p class="profile__name" data-profile-name>Guest</p><p class="profile__email" data-profile-email></p></div></div>
+          <a class="profile__item" href="account.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>My account</a>
+          <a class="profile__item" href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My apps</a>
+          <a class="profile__item" href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+          <button type="button" class="profile__item profile__item--logout" data-logout><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="app-main" id="main">
+    <div class="app-panel">
+      <nav class="app-crumbs" aria-label="Breadcrumb"><ol><li><a href="account.html">Manage Account</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><a href="payment-modes.html">Billing &amp; Subscription</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><a href="account.html#apps">Apps</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><span aria-current="page" data-crumb-app>ZipSchedules</span></li></ol></nav>
+      <div class="app-body">
+        <div class="manage-head-v3">
+          <h1 id="manage-title">Manage (<span data-app-name>ZipSchedules</span>)</h1>
+          <a class="btn btn--danger btn--sm" href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>Close</a>
+        </div>
+        <p class="price-note">* All app prices are in US dollars.</p>
+
+        <!-- Plan tiers render from PLANS in app.js. The design reserves slots for
+             Standard and 51+ Employees tiers; add them there when their pricing is final. -->
+        <p class="manage-summary" id="manage-summary" hidden></p>
+        <div class="tiers tiers--list" id="tiers"></div>
+        <p class="manage-empty" id="manage-empty" hidden>You don&rsquo;t have any apps yet. <a class="link-btn" href="products.html">Browse apps</a></p>
+
+        <!-- Hardware bought with your orders -->
+        <section class="owned-hw" id="owned-hw" aria-labelledby="owned-hw-title" hidden>
+          <div class="owned-hw__head">
+            <h2 class="owned-hw__title" id="owned-hw-title">Hardware</h2>
+            <p class="owned-hw__note">One-time purchases. We&rsquo;ll email shipping details for each order.</p>
+          </div>
+          <ul class="owned-hw__list" id="owned-hw-list"></ul>
+        </section>
+
+        <section class="xsell" aria-labelledby="xsell-title">
+          <div class="xsell__head">
+            <h2 class="xsell__title" id="xsell-title">Get more from Altametrics</h2>
+            <a class="link-btn" href="products.html">Browse all apps</a>
+          </div>
+          <div class="xsell__grid">
+          <article class="xsell-card">
+            <figure class="media media--card" data-media data-label="AI forecasting dashboard projecting sales and labor"><img src="https://altametrics.com/assets/images/pages/drive_rofitability_with_ai-826-6848e2af0.png" alt="AI forecasting dashboard projecting sales and labor" width="826" loading="lazy" decoding="async"></figure>
+            <div class="xsell-card__body">
+              <h3 class="xsell-card__title">AI Forecasting</h3>
+              <p class="xsell-card__text">Forecast demand from sales history, local events and weather, then plan labor and inventory around it.</p>
+              <a class="link-btn" href="https://altametrics.com/restaurant-forecasting-software.html">Learn more<span class="sr-only"> about AI Forecasting</span> <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+          <article class="xsell-card">
+            <figure class="media media--card" data-media data-label="Automated food safety and HACCP compliance on a mobile device"><img src="https://altametrics.com/assets/images/pages/automated_food_safety_and_haccp-822-875ec1f95.png" alt="Automated food safety and HACCP compliance on a mobile device" width="826" loading="lazy" decoding="async"></figure>
+            <div class="xsell-card__body">
+              <h3 class="xsell-card__title">Food Safety &amp; Checklists</h3>
+              <p class="xsell-card__text">Digital temperature logs, daily operational checklists and real-time alerts before violations happen.</p>
+              <a class="link-btn" href="https://altametrics.com/restaurant-checklist.html">Learn more<span class="sr-only"> about Food Safety &amp; Checklists</span> <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+          <article class="xsell-card">
+            <figure class="media media--card" data-media data-label="Enterprise reporting across multiple restaurant locations"><img src="https://altametrics.com/assets/images/pages/enterprise_scale-826-4c55569bd.png" alt="Enterprise reporting across multiple restaurant locations" width="826" loading="lazy" decoding="async"></figure>
+            <div class="xsell-card__body">
+              <h3 class="xsell-card__title">Enterprise Reporting</h3>
+              <p class="xsell-card__text">Central visibility, standardized reporting and benchmarks across every location.</p>
+              <a class="link-btn" href="https://altametrics.com/restaurant-enterprise.html">Learn more<span class="sr-only"> about Enterprise Reporting</span> <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+          </article>
+          </div>
+        </section>
+      </div>
+      
+      <footer class="app-footer">
+        <p>&copy; 2026 Altametrics. All rights reserved. <span class="app-footer__links"><a href="https://altametrics.com/legal/terms-of-use/">Terms of Use</a><a href="https://altametrics.com/legal/privacy-policy/">Privacy Policy</a></span></p>
+        
+      </footer>
+    </div>
+  </main>
+  <a class="help-fab" href="https://altametrics.com/contact.html" aria-label="Help and support"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></a>
+
+  <dialog class="dialog result-dialog" id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+    <div class="result-dialog__body">
+      <span class="result-dialog__icon result-dialog__icon--neutral" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+      <h2 class="result-dialog__title" id="confirm-title">Unsubscribe from <span data-unsub-name>ZipSchedules</span>?</h2>
+      <p class="result-dialog__text" id="confirm-text">Your team will lose access to <span data-unsub-name>ZipSchedules</span> when the subscription ends.</p>
+      <div class="confirm-dialog__actions">
+        <button type="button" class="btn btn--ghost btn--lg" data-close-dialog>Keep subscription</button>
+        <button type="button" class="btn btn--danger btn--lg" id="confirm-unsubscribe">Unsubscribe</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog msg-dialog" id="message-dialog" aria-labelledby="message-head" aria-describedby="message-title message-text" data-static>
+    <div class="msg-dialog__head" id="message-head">Payment Message</div>
+    <div class="msg-dialog__body">
+      <p class="msg-dialog__title" id="message-title">You have successfully subscribed your site(s).</p>
+      <p class="msg-dialog__text" id="message-text">Please configure your app or tell your manager to configure it.</p>
+    </div>
+    <div class="msg-dialog__foot"><button type="button" class="btn btn--primary btn--pill" id="message-ok">Ok</button></div>
+  </dialog>
+</body>
+</html>

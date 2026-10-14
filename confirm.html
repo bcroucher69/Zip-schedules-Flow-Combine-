@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirm payment | My Apps</title>
+  <meta name="description" content="Confirm the payment for your new app subscription.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="preconnect" href="https://agcdn.altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body class="page-app" data-page="confirm">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-shell">
+    <div class="app-shell__left">
+      <a class="app-shell__logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+      <a class="app-shell__settings" href="account.html" aria-label="Account settings"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></a>
+      <button type="button" class="app-shell__apps" id="apps-button" aria-haspopup="true" aria-expanded="false" aria-controls="apps-menu"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Apps<svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <nav class="app-menu" id="apps-menu" aria-label="My Apps" hidden>
+        <a href="manage.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My subscriptions</a>
+        <a href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+        <a href="products.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add apps</a>
+      </nav>
+    </div>
+    <div class="app-shell__right">
+      <p class="app-shell__alert" id="payment-alert" role="status" hidden><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Your payment detail is not updated</p>
+      <div class="profile profile--dark" data-profile>
+        <button type="button" class="profile__btn" id="profile-button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" aria-label="Account menu"><span class="profile__initials" data-profile-initials aria-hidden="true"></span><span class="profile__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></button>
+        <div class="profile__menu" id="profile-menu" hidden>
+          <div class="profile__head"><span class="profile__avatar" data-profile-initials aria-hidden="true"></span><div><p class="profile__name" data-profile-name>Guest</p><p class="profile__email" data-profile-email></p></div></div>
+          <a class="profile__item" href="account.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>My account</a>
+          <a class="profile__item" href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My apps</a>
+          <a class="profile__item" href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+          <button type="button" class="profile__item profile__item--logout" data-logout><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="toast" id="toast" role="alert" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span id="toast-text">The product is already purchased</span><button type="button" class="toast__close" id="toast-close" aria-label="Dismiss"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <main class="app-main" id="main">
+    <div class="app-panel">
+      <nav class="app-crumbs" aria-label="Breadcrumb"><ol><li><a href="account.html">Manage Account</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><a href="payment-modes.html">Billing &amp; Subscription</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><a href="account.html#apps">Apps</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><span aria-current="page" data-crumb-app>Zip Inventory</span></li></ol></nav>
+      <div class="app-head">
+        <h1 class="app-head__title">Payment Method</h1>
+        <div class="app-head__actions">
+          <a class="btn btn--primary" href="payment-modes.html?edit=1"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Edit</a>
+          <a class="btn btn--danger" href="products.html" id="cancel-subscribe">Cancel<svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></a>
+        </div>
+      </div>
+      <div class="app-body">
+        <p class="app-lead">You are subscribing with Altametrics Growth. Please confirm your payment.</p>
+        <div class="pay-layout">
+          <div class="paycard-wrap"><div class="paycard" role="img" aria-label="Card on file" id="paycard">
+          <span class="paycard__brand">My Card</span>
+          <span class="paycard__chip" aria-hidden="true"></span>
+          <svg class="paycard__contactless" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8.5 7.5a6 6 0 0 1 0 9M12 5a9.5 9.5 0 0 1 0 14M15.5 2.5a13 13 0 0 1 0 19"/></svg>
+          <span class="paycard__number" aria-hidden="true"><span>&bull;&bull;&bull;&bull;</span><span>&bull;&bull;&bull;&bull;</span><span>&bull;&bull;&bull;&bull;</span><span data-card-last4>&bull;&bull;&bull;&bull;</span></span>
+          <span class="paycard__foot">
+            <span class="paycard__name" data-card-name></span>
+            <span class="paycard__valid"><span class="paycard__valid-label">Valid<br>Thru</span><span class="paycard__exp" data-card-exp-short></span></span>
+          </span>
+        </div></div>
+          <section class="card-details" aria-labelledby="details-title">
+            <h2 class="card-details__head" id="details-title">Card Details</h2>
+            <div class="card-details__body">
+              <p class="card-details__name" data-card-name></p>
+              <div class="card-details__card">
+                <span class="mini-card" aria-hidden="true"><span class="mini-card__brand">My Card</span><span class="mini-card__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; <span data-card-last4></span></span><span class="mini-card__bar"></span></span>
+                <div><p class="card-details__number">**** **** **** <span data-card-last4></span></p><p class="card-details__exp">Card expires at <span data-card-exp></span></p></div>
+              </div>
+
+              <!-- Added: show what the customer is confirming -->
+              <div class="sub-summary">
+                <p class="sub-summary__head">Subscription summary</p>
+                <dl class="sub-summary__rows" id="confirm-rows"></dl>
+                <dl class="sub-summary__total"><dt>Total due today</dt><dd id="confirm-total">$0.00</dd></dl>
+                <p class="sub-summary__note" id="confirm-total-note"></p>
+              </div>
+
+              <div class="card-details__foot">
+                <p class="card-details__secure"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Your card details are secured via Forte payment Systems</p>
+                <button type="button" class="btn btn--confirm" id="confirm-btn"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Confirm</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      
+      <footer class="app-footer">
+        <p>&copy; 2026 Altametrics. All rights reserved. <span class="app-footer__links"><a href="https://altametrics.com/legal/terms-of-use/">Terms of Use</a><a href="https://altametrics.com/legal/privacy-policy/">Privacy Policy</a></span></p>
+        <div class="seals" aria-label="Security and compliance">
+        <!-- PLACEHOLDER: use only seals you are certified for (PCI DSS / CompliAssure from your QSA or Forte) -->
+        <span class="seal-ph">PCI DSS<br>seal</span><span class="seal-ph">Security<br>seal</span>
+      </div>
+      </footer>
+    </div>
+  </main>
+  <a class="help-fab" href="https://altametrics.com/contact.html" aria-label="Help and support"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></a>
+
+  <dialog class="dialog msg-dialog" id="message-dialog" aria-labelledby="message-head" aria-describedby="message-title message-text" data-static>
+    <div class="msg-dialog__head" id="message-head">Payment Message</div>
+    <div class="msg-dialog__body">
+      <p class="msg-dialog__title" id="message-title">You have successfully subscribed your site(s).</p>
+      <p class="msg-dialog__text" id="message-text">Please configure your app or tell your manager to configure it.</p>
+    </div>
+    <div class="msg-dialog__foot"><button type="button" class="btn btn--primary btn--pill" id="message-ok">Ok</button></div>
+  </dialog>
+</body>
+</html>

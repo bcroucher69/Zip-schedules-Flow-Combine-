@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | Altametrics</title>
+  <meta name="description" content="Sign in to Altametrics to complete your purchase.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap">
+</head>
+<body class="page-a2" data-page="login">
+  <a class="skip-link" href="#auth-card">Skip to sign-in</a>
+
+  <!-- Status toast (e.g. "An OTP has been sent to your email ID.") -->
+  <div class="a2-toast" id="a2-toast" role="status" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span id="a2-toast-text"></span></div>
+
+  <a class="a2-logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+
+  <div class="a2-tools">
+    <!-- TODO: language menu -->
+    <button type="button" class="a2-lang" aria-label="Language: English"><svg class="flag" viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#b22234"/><path d="M0 2.31h38M0 5.38h38M0 8.46h38M0 11.54h38M0 14.62h38M0 17.69h38" stroke="#fff" stroke-width="1.54"/><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><span>English</span><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+      <span class="theme-toggle__moon"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="theme-toggle__sun"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+    </button>
+  </div>
+
+  <main class="a2-layout">
+    <section class="a2-show" aria-label="Altametrics products">
+      <p class="a2-tagline">Everything you need to <strong>run your restaurant</strong></p>
+      <div class="a2-stage">
+        <button type="button" class="a2-nav a2-nav--prev" id="slide-prev" aria-label="Previous product"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="a2-frame"><div class="a2-slide-wrap" id="showcase" aria-live="polite" aria-roledescription="carousel"></div></div>
+        <button type="button" class="a2-nav a2-nav--next" id="slide-next" aria-label="Next product"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <div class="a2-cta">
+        <p>Get a personalised demo and learn more about <span id="cta-app">Zip Digital Signage</span></p>
+        <a class="a2-cta__btn" href="https://altametrics.com/contact.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>Contact Us</a>
+      </div>
+      <div class="a2-tabs" role="tablist" aria-label="Products" id="product-tabs"></div>
+    </section>
+
+    <aside class="a2-side">
+      <section class="a2-card" id="auth-card" aria-labelledby="login-title" tabindex="-1">
+        <div class="a2-card__body">
+          <a class="a2-brand" href="index.html" aria-label="Altametrics home"><img class="a2-brand__mark" src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span class="a2-brand__name">Altametrics</span><span class="a2-brand__sub">Growth</span></a><!-- Swap for the official logo SVG -->
+          <h1 class="sr-only" id="login-title">Sign in to Altametrics</h1>
+          <div class="a2-seg" role="tablist" aria-label="Sign-in method">
+            <button type="button" class="a2-seg__tab" role="tab" id="tab-signin" aria-selected="true" aria-controls="panel-signin"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2.5"/><path d="M14 10h5M14 14h3"/></svg>Sign-in</button>
+            <button type="button" class="a2-seg__tab" role="tab" id="tab-qr" aria-selected="false" aria-controls="panel-qr" tabindex="-1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg>QR Code</button>
+          </div>
+
+          <form class="a2-panel" id="panel-signin" role="tabpanel" aria-labelledby="tab-signin" novalidate>
+          <div class="demo-tip" data-demo-tip hidden>
+            <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            <p>Use <strong>test@altametrics.com</strong> to see the existing-customer flow. Any other email starts a new registration.</p>
+            <button type="button" class="demo-tip__btn" data-demo-fill="login-email">Use this email</button>
+          </div>
+            <div class="field">
+              <label class="field__label" for="login-email">Email ID <span class="field__req" aria-hidden="true">*</span></label>
+              <div class="input-wrap input-wrap--icon-left"><svg class="input-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><input class="input" id="login-email" type="email" autocomplete="username" placeholder="name@company.com" required aria-describedby="login-email-error"></div>
+              <p class="field__error" id="login-email-error" hidden></p>
+            </div>
+            <div class="field">
+              <div class="a2-label-row">
+                <label class="field__label" for="login-password">Password <span class="field__req" aria-hidden="true">*</span></label>
+                <button type="button" class="a2-link" id="verify-via-email">Verify via Email</button>
+              </div>
+              <div class="input-wrap input-wrap--icon-left"><svg class="input-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></svg><input class="input a2-password" id="login-password" type="password" autocomplete="current-password" placeholder="Password" required aria-describedby="login-password-error">
+                <button type="button" class="a2-eye" id="toggle-password" aria-label="Show password" aria-pressed="false"><svg class="icon icon--sm a2-eye__show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="icon icon--sm a2-eye__hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19M14.12 14.12a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg></button></div>
+              <p class="field__error" id="login-password-error" hidden></p>
+            </div>
+            <label class="a2-check"><input type="checkbox" id="remember-me"> Remember Me</label>
+            <p class="form-message" id="login-message" role="alert" hidden></p>
+            <button type="submit" class="btn btn--validate btn--block a2-submit">Login</button>
+            <div class="a2-links"><a class="a2-link" href="#">Forgot Password</a><!-- TODO --><a class="a2-link" href="#">Login with Phone</a><!-- TODO --></div>
+          </form>
+
+          <div class="a2-panel a2-qr" id="panel-qr" role="tabpanel" aria-labelledby="tab-qr" hidden>
+            <!-- PLACEHOLDER: sign-in QR generated by your auth service -->
+            <div class="a2-qr__code" role="img" aria-label="Sign-in QR code">QR</div>
+            <p>Open the Altametrics mobile app and scan this code to sign in.</p>
+          </div>
+
+          <div class="a2-passkey">
+            <button type="button" class="a2-passkey__btn" id="passkey-btn"><svg class="icon icon--lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4M14 13.12c0 2.38 0 6.38-1 8.88M17.29 21.02c.12-.6.43-2.3.5-3.02M2 12a10 10 0 0 1 18-6M2 16h.01M21.8 16c.2-2 .131-5.354 0-6M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2M8.65 22c.21-.66.45-1.32.57-2M9 6.8a6 6 0 0 1 9 5.2v2"/></svg>Login with Passkey</button>
+            <button type="button" class="a2-info" id="passkey-info" aria-expanded="false" aria-controls="passkey-tip" aria-label="What is a passkey?">i</button>
+            <p class="a2-tip" id="passkey-tip" role="note" hidden>Sign in with your device's fingerprint, face or screen lock instead of a password.</p>
+          </div>
+        </div>
+        <p class="a2-card__foot">Need an Account ? <a href="registration.html" id="register-now">Register Now</a></p>
+      </section>
+      <section class="apps-card" aria-labelledby="apps-title">
+        <div>
+          <h2 class="apps-card__title" id="apps-title">Scan the QR Code to download our <strong>Mobile Applications</strong> effortlessly.</h2>
+          <div class="apps-card__stores">
+            <a class="store-btn" href="#"><!-- TODO: Google Play URL --><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 3 14 9-14 9V3z"/></svg><span><span class="store-btn__small">GET IT ON</span><span class="store-btn__big">Google Play</span></span></a>
+            <a class="store-btn" href="#"><!-- TODO: App Store URL --><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg><span><span class="store-btn__small">Download on the</span><span class="store-btn__big">App Store</span></span></a>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: QR code for the app download page -->
+        <div class="apps-card__qr" role="img" aria-label="QR code to download the Altametrics mobile apps">QR</div>
+      </section>
+    </aside>
+  </main>
+
+  <a class="chat-fab" href="https://altametrics.com/contact.html" aria-label="Chat with us"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></a>
+</body>
+</html>

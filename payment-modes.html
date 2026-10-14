@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Modes | My Apps</title>
+  <meta name="description" content="Manage the card on file for your Altametrics subscriptions.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="preconnect" href="https://agcdn.altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body class="page-app" data-page="payment-modes">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-shell">
+    <div class="app-shell__left">
+      <a class="app-shell__logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+      <a class="app-shell__settings" href="account.html" aria-label="Account settings"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></a>
+      <button type="button" class="app-shell__apps" id="apps-button" aria-haspopup="true" aria-expanded="false" aria-controls="apps-menu"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Apps<svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <nav class="app-menu" id="apps-menu" aria-label="My Apps" hidden>
+        <a href="manage.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My subscriptions</a>
+        <a href="payment-modes.html" aria-current="page"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+        <a href="products.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add apps</a>
+      </nav>
+    </div>
+    <div class="app-shell__right">
+      <p class="app-shell__alert" id="payment-alert" role="status" ><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Your payment detail is not updated</p>
+      <div class="profile profile--dark" data-profile>
+        <button type="button" class="profile__btn" id="profile-button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" aria-label="Account menu"><span class="profile__initials" data-profile-initials aria-hidden="true"></span><span class="profile__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></button>
+        <div class="profile__menu" id="profile-menu" hidden>
+          <div class="profile__head"><span class="profile__avatar" data-profile-initials aria-hidden="true"></span><div><p class="profile__name" data-profile-name>Guest</p><p class="profile__email" data-profile-email></p></div></div>
+          <a class="profile__item" href="account.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>My account</a>
+          <a class="profile__item" href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My apps</a>
+          <a class="profile__item" href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+          <button type="button" class="profile__item profile__item--logout" data-logout><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="app-main" id="main">
+    <div class="app-panel">
+      <nav class="app-crumbs" aria-label="Breadcrumb"><ol><li><a href="account.html">Manage Account</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><a href="payment-modes.html">Billing &amp; Subscription</a><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></li><li><span aria-current="page" >Payment Modes</span></li></ol></nav>
+      <div class="app-head">
+        <h1 class="app-head__title">Payment Modes</h1>
+        <div class="app-head__actions"><button type="button" class="btn btn--primary" id="add-card"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span id="add-card-label">Add</span></button></div>
+      </div>
+      <div class="app-body">
+        <p class="app-lead">View all your purchase statement here and have a look at the amount paid according to the subscribed services and their agreed prices.</p>
+        <p class="info-note"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg><span>Adding credit card info will not initiate your billing. You have to subscribe application(s) separately.</span></p>
+
+        <div class="pay-layout">
+          <div class="paycard-wrap"><div class="paycard" role="img" aria-label="Card on file" id="paycard">
+          <span class="paycard__brand">My Card</span>
+          <span class="paycard__chip" aria-hidden="true"></span>
+          <svg class="paycard__contactless" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8.5 7.5a6 6 0 0 1 0 9M12 5a9.5 9.5 0 0 1 0 14M15.5 2.5a13 13 0 0 1 0 19"/></svg>
+          <span class="paycard__number" aria-hidden="true"><span>&bull;&bull;&bull;&bull;</span><span>&bull;&bull;&bull;&bull;</span><span>&bull;&bull;&bull;&bull;</span><span data-card-last4>&bull;&bull;&bull;&bull;</span></span>
+          <span class="paycard__foot">
+            <span class="paycard__name" data-card-name></span>
+            <span class="paycard__valid"><span class="paycard__valid-label">Valid<br>Thru</span><span class="paycard__exp" data-card-exp-short></span></span>
+          </span>
+        </div></div>
+
+          <div class="empty-card" id="card-empty">
+            <svg class="empty-card__art" viewBox="0 0 160 110" aria-hidden="true">
+              <rect x="10" y="22" width="112" height="72" rx="10" fill="#dbe6fd"/>
+              <rect x="26" y="10" width="112" height="72" rx="10" fill="#1554d1"/>
+              <rect x="26" y="26" width="112" height="12" fill="#0b1d3a" opacity=".55"/>
+              <rect x="38" y="52" width="22" height="16" rx="3" fill="#ffd27a"/>
+              <rect x="70" y="60" width="54" height="6" rx="3" fill="#fff" opacity=".7"/>
+              <circle cx="132" cy="86" r="20" fill="#fff" stroke="#1554d1" stroke-width="3"/>
+              <path d="M132 77v18M123 86h18" stroke="#1554d1" stroke-width="3.5" stroke-linecap="round"/>
+            </svg>
+            <p class="empty-card__title">No credit card information is available.</p>
+            <p class="empty-card__text">Please click on add to enter payment details.</p>
+            <button type="button" class="btn btn--primary" id="empty-add"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add card</button>
+          </div>
+
+          <section class="card-details" id="card-saved" aria-labelledby="saved-title" hidden>
+            <h2 class="card-details__head" id="saved-title">Card Details</h2>
+            <div class="card-details__body">
+              <p class="card-details__name" data-card-name></p>
+              <div class="card-details__card">
+                <span class="mini-card" aria-hidden="true"><span class="mini-card__brand">My Card</span><span class="mini-card__num">&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull; <span data-card-last4></span></span><span class="mini-card__bar"></span></span>
+                <div><p class="card-details__number">**** **** **** <span data-card-last4></span></p><p class="card-details__exp">Card expires at <span data-card-exp></span></p></div>
+              </div>
+              <div class="card-details__foot">
+                <p class="card-details__secure"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Your card details are secured via Forte payment Systems</p>
+                <a class="btn btn--primary" id="continue-subscribe" href="confirm.html" hidden>Continue to subscribe <svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+      
+      <footer class="app-footer">
+        <p>&copy; 2026 Altametrics. All rights reserved. <span class="app-footer__links"><a href="https://altametrics.com/legal/terms-of-use/">Terms of Use</a><a href="https://altametrics.com/legal/privacy-policy/">Privacy Policy</a></span></p>
+        <div class="seals" aria-label="Security and compliance">
+        <!-- PLACEHOLDER: use only seals you are certified for (PCI DSS / CompliAssure from your QSA or Forte) -->
+        <span class="seal-ph">PCI DSS<br>seal</span><span class="seal-ph">Security<br>seal</span>
+      </div>
+      </footer>
+    </div>
+  </main>
+  <a class="help-fab" href="https://altametrics.com/contact.html" aria-label="Help and support"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></a>
+
+  <!-- =====================================================================
+       FORTE CHECKOUT — PROTOTYPE
+       In production these three steps are rendered by CSG Forte's hosted checkout
+       (launched from ZipFlow.payments.open in app.js). They are reproduced here so
+       the flow can be demoed and QA'd end to end. Never send card data to your server.
+       ===================================================================== -->
+  <dialog class="dialog forte" id="forte-card" aria-labelledby="forte-card-title">
+    <div class="forte__head">
+      <div><h2 class="forte__merchant" id="forte-card-title" data-merchant>Altametrics LLC</h2><p class="forte__kicker">PAYMENT METHOD</p></div>
+      <button type="button" class="forte__close" data-close-dialog aria-label="Close payment window"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <form id="forte-card-form" novalidate>
+      <div class="forte__body">
+        <fieldset class="forte__option">
+          <legend class="sr-only">Payment type</legend>
+          <label class="forte__option-title"><input type="radio" name="forte-type" value="card" checked>Credit or debit card</label>
+          <div class="forte-row"><label for="fc-number">Card number</label><input class="forte-input" id="fc-number" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="Card Number" maxlength="23" aria-describedby="fc-number-error"><p class="forte-row__err" id="fc-number-error" hidden></p></div>
+          <div class="forte-row"><label for="fc-exp">Exp date (MM YYYY)</label><input class="forte-input" id="fc-exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="Expiration Date" maxlength="9" aria-describedby="fc-exp-error"><p class="forte-row__err" id="fc-exp-error" hidden></p></div>
+          <div class="forte-row"><label for="fc-cvv">Security code</label><div class="forte-cvv"><input class="forte-input forte-input--short" id="fc-cvv" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="CVV" maxlength="4" aria-describedby="fc-cvv-error"><span class="brand-chips" data-brand-chips aria-label="Accepted cards: Visa, Mastercard, American Express, Discover"><span class="brand-chip" data-brand="visa">VISA</span><span class="brand-chip" data-brand="mastercard">MC</span><span class="brand-chip" data-brand="amex">AMEX</span><span class="brand-chip" data-brand="discover">DISC</span></span></div><p class="forte-row__err" id="fc-cvv-error" hidden></p></div>
+        </fieldset>
+      </div>
+      <div class="forte__actions"><button type="submit" class="btn btn--forte" id="fc-next">Next</button></div>
+    </form>
+    <!-- Forte's hosted checkout supplies these links in production -->
+    <div class="forte__bar">
+      <span class="forte__bar-brand">Powered by CSG Forte Payments, Inc.</span>
+      <span class="forte__bar-links">
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Security</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Privacy</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>TOS</a>
+      </span>
+    </div>
+  </dialog>
+
+  <dialog class="dialog forte" id="forte-billing" aria-labelledby="forte-billing-title">
+    <div class="forte__head">
+      <div><h2 class="forte__merchant" id="forte-billing-title" data-merchant>Altametrics LLC</h2><div class="forte__section-head"><p class="forte__label">PAYMENT INFORMATION</p><button type="button" class="forte__link" data-forte-edit="card">Edit Payment Information</button></div></div>
+      <button type="button" class="forte__close" data-close-dialog aria-label="Close payment window"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <form id="forte-billing-form" novalidate>
+      <div class="forte__body">
+        <div class="forte-summary">
+          <span><span class="forte-summary__brand" data-review-brand>VISA</span></span>
+          <p data-review-pay></p>
+        </div>
+        <div>
+          <div class="forte__section-head">
+            <p class="forte__label">BILLING INFORMATION</p>
+            <label class="forte-country"><span class="sr-only">Country</span><select id="fb-country"><option>United States of America</option></select></label>
+          </div>
+          <div class="forte-fields">
+            <div class="forte-row"><label for="fb-company">Company name</label><span><input class="forte-input" id="fb-company" type="text" autocomplete="organization" placeholder="Company name" aria-describedby="fb-company-error"></span><p class="forte-row__err" id="fb-company-error" hidden></p></div>
+            <div class="forte-row"><label for="fb-name">Full name</label><span><input class="forte-input" id="fb-name" type="text" autocomplete="cc-name" placeholder="Name on card" aria-describedby="fb-name-error"></span><p class="forte-row__err" id="fb-name-error" hidden></p></div>
+            <div class="forte-row"><label for="fb-address1">Address line 1</label><input class="forte-input" id="fb-address1" type="text" autocomplete="address-line1" placeholder="Street address" aria-describedby="fb-address1-error"><p class="forte-row__err" id="fb-address1-error" hidden></p></div>
+            <div class="forte-row"><label for="fb-address2">Address line 2</label><input class="forte-input" id="fb-address2" type="text" autocomplete="address-line2" placeholder="Apt, suite, unit"></div>
+            <div class="forte-row"><span class="forte-row__label" id="fb-citystate-label">City State</span>
+              <div class="forte-pair" role="group" aria-labelledby="fb-citystate-label">
+                <input class="forte-input" id="fb-city" type="text" autocomplete="address-level2" placeholder="City" aria-label="City" aria-describedby="fb-city-error">
+                <span class="forte-select-wrap"><select class="forte-select" id="fb-state" autocomplete="address-level1" aria-label="State" aria-describedby="fb-city-error"><option value="">State</option></select><svg class="select-wrap__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+              </div>
+              <p class="forte-row__err" id="fb-city-error" hidden></p>
+            </div>
+            <div class="forte-row"><label for="fb-postal">Postal code</label><span><input class="forte-input" id="fb-postal" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="ZIP code" maxlength="10" aria-describedby="fb-postal-error"></span><p class="forte-row__err" id="fb-postal-error" hidden></p></div>
+            <div class="forte-row"><label for="fb-phone">Phone number</label><input class="forte-input" id="fb-phone" type="tel" autocomplete="tel-national" placeholder="000-000-0000" aria-describedby="fb-phone-error"><p class="forte-row__err" id="fb-phone-error" hidden></p></div>
+            <div class="forte-row"><label for="fb-email">Email address</label><input class="forte-input" id="fb-email" type="email" autocomplete="email" placeholder="name@company.com" aria-describedby="fb-email-error"><p class="forte-row__err" id="fb-email-error" hidden></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="forte__actions"><button type="submit" class="btn btn--forte">Next</button></div>
+    </form>
+    <!-- Forte's hosted checkout supplies these links in production -->
+    <div class="forte__bar">
+      <span class="forte__bar-brand">Powered by CSG Forte Payments, Inc.</span>
+      <span class="forte__bar-links">
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Security</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Privacy</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>TOS</a>
+      </span>
+    </div>
+  </dialog>
+
+  <dialog class="dialog forte" id="forte-review" aria-labelledby="forte-review-title">
+    <div class="forte__head">
+      <div><h2 class="forte__merchant" id="forte-review-title" data-merchant>Altametrics LLC</h2><div class="forte__section-head"><p class="forte__label">PAYMENT INFORMATION</p><button type="button" class="forte__link" data-forte-edit="card">Edit Payment Information</button></div></div>
+      <button type="button" class="forte__close" data-close-dialog aria-label="Close payment window"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="forte__body">
+      <div class="forte-summary">
+          <span><span class="forte-summary__brand" data-review-brand>VISA</span></span>
+          <p data-review-pay></p>
+        </div>
+      <div>
+        <div class="forte__section-head"><p class="forte__label">BILLING INFORMATION</p><button type="button" class="forte__link" data-forte-edit="billing">Edit Billing Information</button></div>
+        <p class="forte-lines forte-lines--spaced" data-review-bill></p>
+      </div>
+      <div>
+        <p class="forte__label forte-amount__head">AMOUNT SUMMARY</p>
+        <p class="forte-amount__row"><span>Amount:</span><strong data-review-amount>$0.00</strong></p>
+      </div>
+      <!-- CONTENT: confirm wording with legal/Forte; the charges are recurring monthly subscriptions -->
+      <p class="forte-auth">I authorize CSG Forte to initiate a one-time electronic payment from my listed account in the amount specified above.</p>
+      <p class="forte__error" id="forte-error" role="alert" hidden></p>
+    </div>
+    <div class="forte__actions">
+      <p class="forte-legal">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.</p>
+      <button type="button" class="btn btn--forte" id="forte-authorize">Authorize</button>
+    </div>
+    <!-- Forte's hosted checkout supplies these links in production -->
+    <div class="forte__bar">
+      <span class="forte__bar-brand">Powered by CSG Forte Payments, Inc.</span>
+      <span class="forte__bar-links">
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Security</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Privacy</a>
+        <a href="#"><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>TOS</a>
+      </span>
+    </div>
+  </dialog>
+</body>
+</html>

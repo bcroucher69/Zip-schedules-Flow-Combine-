@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Verify your account | Altametrics</title>
+  <meta name="description" content="Enter the one-time password sent to your email.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap">
+</head>
+<body class="page-a2" data-page="verify">
+  <a class="skip-link" href="#auth-card">Skip to verification</a>
+
+  <!-- Status toast (e.g. "An OTP has been sent to your email ID.") -->
+  <div class="a2-toast" id="a2-toast" role="status" hidden><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg><span id="a2-toast-text"></span></div>
+
+  <a class="a2-logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+
+  <div class="a2-tools">
+    <!-- TODO: language menu -->
+    <button type="button" class="a2-lang" aria-label="Language: English"><svg class="flag" viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#b22234"/><path d="M0 2.31h38M0 5.38h38M0 8.46h38M0 11.54h38M0 14.62h38M0 17.69h38" stroke="#fff" stroke-width="1.54"/><rect width="15.2" height="10.77" fill="#3c3b6e"/></svg><span>English</span><svg class="icon icon--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+      <span class="theme-toggle__moon"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span><span class="theme-toggle__sun"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></span>
+    </button>
+  </div>
+
+  <main class="a2-layout">
+    <section class="a2-show" aria-label="Altametrics products">
+      <p class="a2-tagline">Everything you need to <strong>run your restaurant</strong></p>
+      <div class="a2-stage">
+        <button type="button" class="a2-nav a2-nav--prev" id="slide-prev" aria-label="Previous product"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        <div class="a2-frame"><div class="a2-slide-wrap" id="showcase" aria-live="polite" aria-roledescription="carousel"></div></div>
+        <button type="button" class="a2-nav a2-nav--next" id="slide-next" aria-label="Next product"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+      <div class="a2-cta">
+        <p>Get a personalised demo and learn more about <span id="cta-app">Zip Digital Signage</span></p>
+        <a class="a2-cta__btn" href="https://altametrics.com/contact.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>Contact Us</a>
+      </div>
+      <div class="a2-tabs" role="tablist" aria-label="Products" id="product-tabs"></div>
+    </section>
+
+    <aside class="a2-side">
+      <section class="a2-card" id="auth-card" aria-labelledby="otp-title" tabindex="-1">
+        <div class="a2-card__body">
+          <a class="a2-brand" href="index.html" aria-label="Altametrics home"><img class="a2-brand__mark" src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span class="a2-brand__name">Altametrics</span><span class="a2-brand__sub">Growth</span></a><!-- Swap for the official logo SVG -->
+          <h1 class="otp-card__title" id="otp-title">Verify Your Account</h1>
+          <p class="otp-card__text" id="otp-text">Please enter the One-Time Password to verify your Email ID <strong class="a2-email" id="otp-email">your email</strong></p>
+          <form id="verify-form" novalidate>
+            <p class="otp-card__label" id="otp-label">OTP sent to your Email ID</p>
+            <fieldset class="otp-row" aria-labelledby="otp-label" aria-describedby="otp-text otp-message">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Digit 1 of 6">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2 of 6">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3 of 6">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4 of 6">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5 of 6">
+              <input class="otp-box" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6 of 6">
+            </fieldset>
+            <div class="otp-meta">
+              <p class="otp-meta__timer" id="otp-timer">OTP expires in <strong id="otp-countdown">10:00</strong> Min</p>
+              <button type="button" class="otp-meta__resend" id="resend-code"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>Resend OTP</button>
+            </div>
+            <p class="otp-message" id="otp-message" role="status" hidden></p>
+            <div class="otp-actions">
+              <a class="btn btn--ghost btn--lg" id="otp-back" href="login.html">Back</a>
+              <button type="submit" class="btn btn--validate btn--lg">Validate</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <section class="apps-card" aria-labelledby="apps-title">
+        <div>
+          <h2 class="apps-card__title" id="apps-title">Scan the QR Code to download our <strong>Mobile Applications</strong> effortlessly.</h2>
+          <div class="apps-card__stores">
+            <a class="store-btn" href="#"><!-- TODO: Google Play URL --><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 3 14 9-14 9V3z"/></svg><span><span class="store-btn__small">GET IT ON</span><span class="store-btn__big">Google Play</span></span></a>
+            <a class="store-btn" href="#"><!-- TODO: App Store URL --><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg><span><span class="store-btn__small">Download on the</span><span class="store-btn__big">App Store</span></span></a>
+          </div>
+        </div>
+        <!-- PLACEHOLDER: QR code for the app download page -->
+        <div class="apps-card__qr" role="img" aria-label="QR code to download the Altametrics mobile apps">QR</div>
+      </section>
+    </aside>
+  </main>
+
+  <a class="chat-fab" href="https://altametrics.com/contact.html" aria-label="Chat with us"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></a>
+</body>
+</html>

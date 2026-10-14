@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Account | My Apps</title>
+  <meta name="description" content="Your Altametrics account, billing and apps.">
+  <meta name="theme-color" content="#0b1d3a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://altametrics.com">
+  <link rel="preconnect" href="https://agcdn.altametrics.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body class="page-app" data-page="account">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="app-shell">
+    <div class="app-shell__left">
+      <a class="app-shell__logo" href="index.html" aria-label="Altametrics home"><img src="assets/img/altametrics-mark.png" alt="" width="45" height="34"><span>Altametrics</span></a>
+      <a class="app-shell__settings" href="account.html" aria-label="Account settings"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></a>
+      <button type="button" class="app-shell__apps" id="apps-button" aria-haspopup="true" aria-expanded="false" aria-controls="apps-menu"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My Apps<svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <nav class="app-menu" id="apps-menu" aria-label="My Apps" hidden>
+        <a href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My subscriptions</a>
+        <a href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+        <a href="products.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add apps</a>
+      </nav>
+    </div>
+    <div class="app-shell__right">
+      <p class="app-shell__alert" id="payment-alert" role="status" hidden><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>Your payment detail is not updated</p>
+      <div class="profile profile--dark" data-profile>
+        <button type="button" class="profile__btn" id="profile-button" aria-haspopup="true" aria-expanded="false" aria-controls="profile-menu" aria-label="Account menu"><span class="profile__initials" data-profile-initials aria-hidden="true"></span><span class="profile__icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></button>
+        <div class="profile__menu" id="profile-menu" hidden>
+          <div class="profile__head"><span class="profile__avatar" data-profile-initials aria-hidden="true"></span><div><p class="profile__name" data-profile-name>Guest</p><p class="profile__email" data-profile-email></p></div></div>
+          <a class="profile__item" href="account.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>My account</a>
+          <a class="profile__item" href="account.html#apps"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>My apps</a>
+          <a class="profile__item" href="payment-modes.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>Payment Modes</a>
+          <button type="button" class="profile__item profile__item--logout" data-logout><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="app-main" id="main">
+    <div class="app-panel">
+      <nav class="app-crumbs" aria-label="Breadcrumb"><ol><li><span aria-current="page">Manage Account</span></li></ol></nav>
+      <div class="app-body">
+        <div class="acct-head">
+          <div>
+            <h1 class="acct-head__title">Manage Account</h1>
+            <p class="acct-head__sub">Your profile, billing and apps in one place.</p>
+          </div>
+          <a class="btn btn--primary" href="products.html"><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add apps &amp; hardware</a>
+        </div>
+
+        <!-- Signed-out state -->
+        <section class="acct-card acct-signedout" id="acct-signedout" hidden>
+          <h2 class="acct-card__title">You&rsquo;re not signed in</h2>
+          <p class="acct-card__text">Sign in to see your apps and billing, or create a new account.</p>
+          <div class="acct-actions"><a class="btn btn--primary" href="login.html">Sign in</a><a class="btn btn--ghost" href="registration.html">Register</a></div>
+        </section>
+
+        <div class="acct-grid" id="acct-content">
+          <section class="acct-card" aria-labelledby="acct-profile-title">
+            <div class="acct-card__head"><h2 class="acct-card__title" id="acct-profile-title">Profile</h2><span class="status-pill status-pill--active">Signed in</span></div>
+            <div class="acct-profile">
+              <span class="acct-profile__avatar" data-profile-initials aria-hidden="true"></span>
+              <dl class="acct-dl">
+                <div><dt>Name</dt><dd data-profile-name></dd></div>
+                <div><dt>Email</dt><dd data-profile-email></dd></div>
+                <div><dt>Business</dt><dd id="acct-business"></dd></div>
+              </dl>
+            </div>
+            <button type="button" class="btn btn--ghost btn--sm acct-logout" data-logout><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Log out</button>
+          </section>
+
+          <section class="acct-card" aria-labelledby="acct-billing-title">
+            <div class="acct-card__head"><h2 class="acct-card__title" id="acct-billing-title">Billing &amp; Subscription</h2><a class="link-btn" href="payment-modes.html">Payment Modes</a></div>
+            <div class="acct-billing" id="acct-card-on-file">
+              <span class="mini-card" aria-hidden="true"><span class="mini-card__brand">My Card</span><span class="mini-card__num">&bull;&bull;&bull;&bull; <span data-card-last4></span></span><span class="mini-card__bar"></span></span>
+              <div><p class="acct-billing__num"><span id="acct-card-brand">Card</span> ending in <span data-card-last4></span></p><p class="acct-billing__exp">Expires <span data-card-exp></span></p></div>
+            </div>
+            <p class="acct-card__text" id="acct-no-card" hidden>No card on file. <a class="link-btn" href="payment-modes.html">Add a card</a></p>
+            <dl class="acct-totals"><div><dt>Monthly total</dt><dd id="acct-monthly">$0.00/mo</dd></div></dl>
+          </section>
+
+          <section class="acct-card acct-card--wide" id="apps" aria-labelledby="acct-apps-title" tabindex="-1">
+            <div class="acct-card__head"><h2 class="acct-card__title" id="acct-apps-title">Apps</h2><a class="link-btn" href="products.html">Browse apps</a></div>
+            <ul class="acct-apps" id="acct-apps"></ul>
+            <p class="acct-card__text" id="acct-apps-empty" hidden>You don&rsquo;t have any apps yet. <a class="link-btn" href="products.html">Browse apps</a></p>
+          </section>
+        </div>
+      </div>
+
+      <footer class="app-footer">
+        <p>&copy; 2026 Altametrics. All rights reserved. <span class="app-footer__links"><a href="https://altametrics.com/legal/terms-of-use/">Terms of Use</a><a href="https://altametrics.com/legal/privacy-policy/">Privacy Policy</a></span></p>
+        
+      </footer>
+    </div>
+  </main>
+  <a class="help-fab" href="https://altametrics.com/contact.html" aria-label="Help and support"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></a>
+</body>
+</html>
